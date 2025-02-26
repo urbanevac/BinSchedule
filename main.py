@@ -42,6 +42,18 @@ st.markdown("""
         color: #ff9800;
         font-weight: bold;
     }
+    .bin-guide {
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #f5f5f5;
+        margin: 10px 0;
+    }
+    .bin-type {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: white;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -86,6 +98,49 @@ if st.button("Download Calendar (.ics)"):
         mime="text/calendar"
     )
     st.info("💡 Tip: Open this file with your calendar app to import the next month's collection schedule")
+
+# Quick Bin Guide
+st.subheader("Quick Bin Guide")
+with st.expander("Click to see what goes in each bin"):
+    st.markdown("""
+        <div class="bin-guide">
+            <div class="bin-type">
+                <h4>🔴 Red Recycling Bin</h4>
+                ✅ Clean plastic bottles & containers<br>
+                ✅ Metal tins & cans<br>
+                ✅ Empty aerosols<br>
+                ❌ No plastic bags or films<br>
+                ❌ No food waste
+            </div>
+
+            <div class="bin-type">
+                <h4>🔵 Blue Recycling Bin</h4>
+                ✅ Paper & cardboard<br>
+                ✅ Newspapers & magazines<br>
+                ✅ Clean paper packaging<br>
+                ❌ No wrapping paper<br>
+                ❌ No tissues or kitchen roll
+            </div>
+
+            <div class="bin-type">
+                <h4>⚫ Black Bin (Weekly)</h4>
+                ✅ General household waste<br>
+                ✅ Non-recyclable items<br>
+                ✅ Food-contaminated packaging<br>
+                ❌ No recyclable items<br>
+                ❌ No garden waste
+            </div>
+
+            <div class="bin-type">
+                <h4>🟢 Green Bin (Weekly)</h4>
+                ✅ Grass cuttings<br>
+                ✅ Leaves & plants<br>
+                ✅ Small branches<br>
+                ❌ No soil or rubble<br>
+                ❌ No food waste
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
 
 # Instructions
 st.markdown("""
