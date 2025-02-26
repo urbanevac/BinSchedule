@@ -28,7 +28,10 @@ SPECIAL_COLLECTION_DAYS_2025 = {
 
 def get_week_number(date):
     """Get the week number within the month (0-based)"""
-    return (date.day - 1) // 7
+    first_day = date.replace(day=1)
+    first_monday = first_day - timedelta(days=first_day.weekday())
+    week_number = (date - first_monday).days // 7
+    return week_number
 
 def is_special_collection_day(date):
     """Check if the given date is a special collection day"""
@@ -42,13 +45,15 @@ def is_red_bin_week(date):
     week = get_week_number(date)
 
     try:
-        return COLLECTION_SCHEDULE_2025[month][week]
-    except (KeyError, IndexError):
-        # If we're beyond the last defined week of the month,
-        # use the first week of the next month
-        if week >= len(COLLECTION_SCHEDULE_2025[month]):
+        # Get the schedule for the current month
+        month_schedule = COLLECTION_SCHEDULE_2025[month]
+        if week < len(month_schedule):
+            return month_schedule[week]
+        else:
+            # If we're in the last week of the month, check the first week of next month
             next_month = month + 1 if month < 12 else 1
             return COLLECTION_SCHEDULE_2025[next_month][0]
+    except (KeyError, IndexError):
         return None
 
 def get_bin_color(date):
