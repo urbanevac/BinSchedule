@@ -107,6 +107,7 @@ st.markdown("""
 1. Put your bin out the night before collection day
 2. Ensure the bin is easily accessible
 3. Check Milton Keynes Council website for holiday changes
+4. Black and Green bins are collected every week
 
 ### Special Collection Days
 - Days marked with a gold border are special collection days
