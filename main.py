@@ -2,7 +2,6 @@ import streamlit as st
 from datetime import datetime
 from bin_schedule import (
     get_bin_color, 
-    get_next_collection_date, 
     is_special_collection_day,
     generate_calendar_file
 )
@@ -75,18 +74,6 @@ st.markdown(f"""
 
 if is_special:
     st.warning("⚠️ This is a special collection day. Please check the Milton Keynes Council website for specific instructions.")
-
-# Next collection date
-next_date = get_next_collection_date(current_date)
-if next_date:
-    next_bin_color = get_bin_color(next_date)
-    next_is_special = is_special_collection_day(next_date)
-
-    st.subheader("Next Collection")
-    st.write(f"Date: {next_date.strftime('%d %B %Y')}")
-    st.write(f"Bin Color: {next_bin_color}")
-    if next_is_special:
-        st.warning("⚠️ Next collection is a special collection day")
 
 # Calendar Integration
 st.subheader("Add to Calendar")
