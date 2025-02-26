@@ -7,7 +7,7 @@ from ics import Calendar, Event
 # Special days are marked with *
 COLLECTION_SCHEDULE_2025 = {
     1: [True, True, True, True, True],  # January weeks
-    2: [True, True, False, False],      # February weeks
+    2: [True, True, False, False, True],  # February weeks (added last week)
     3: [False, False, False, False],    # March weeks
     4: [True, True, True, True],        # April weeks
     5: [True, True, False, False, True], # May weeks
@@ -44,6 +44,11 @@ def is_red_bin_week(date):
     try:
         return COLLECTION_SCHEDULE_2025[month][week]
     except (KeyError, IndexError):
+        # If we're beyond the last defined week of the month,
+        # use the first week of the next month
+        if week >= len(COLLECTION_SCHEDULE_2025[month]):
+            next_month = month + 1 if month < 12 else 1
+            return COLLECTION_SCHEDULE_2025[next_month][0]
         return None
 
 def get_bin_color(date):
