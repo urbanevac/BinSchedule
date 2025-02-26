@@ -42,18 +42,6 @@ st.markdown("""
         color: #ff9800;
         font-weight: bold;
     }
-    .bin-guide {
-        padding: 15px;
-        border-radius: 8px;
-        background-color: #f5f5f5;
-        margin: 10px 0;
-    }
-    .bin-type {
-        margin: 10px 0;
-        padding: 10px;
-        border-radius: 5px;
-        background-color: white;
-    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -102,45 +90,45 @@ if st.button("Download Calendar (.ics)"):
 # Quick Bin Guide
 st.subheader("Quick Bin Guide")
 with st.expander("Click to see what goes in each bin"):
-    st.markdown("""
-        <div class="bin-guide">
-            <div class="bin-type">
-                <h4>🔴 Red Recycling Bin</h4>
-                ✅ Clean plastic bottles & containers<br>
-                ✅ Metal tins & cans<br>
-                ✅ Empty aerosols<br>
-                ❌ No plastic bags or films<br>
-                ❌ No food waste
-            </div>
+    # Red Bin
+    st.markdown("### 🔴 Red Recycling Bin")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("**✅ Accepted**")
+        st.markdown("- Clean plastic bottles & containers\n- Metal tins & cans\n- Empty aerosols")
+    with col2:
+        st.markdown("**❌ Not Accepted**")
+        st.markdown("- Plastic bags or films\n- Food waste")
 
-            <div class="bin-type">
-                <h4>🔵 Blue Recycling Bin</h4>
-                ✅ Paper & cardboard<br>
-                ✅ Newspapers & magazines<br>
-                ✅ Clean paper packaging<br>
-                ❌ No wrapping paper<br>
-                ❌ No tissues or kitchen roll
-            </div>
+    # Blue Bin
+    st.markdown("### 🔵 Blue Recycling Bin")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("**✅ Accepted**")
+        st.markdown("- Paper & cardboard\n- Newspapers & magazines\n- Clean paper packaging")
+    with col2:
+        st.markdown("**❌ Not Accepted**")
+        st.markdown("- Wrapping paper\n- Tissues or kitchen roll")
 
-            <div class="bin-type">
-                <h4>⚫ Black Bin (Weekly)</h4>
-                ✅ General household waste<br>
-                ✅ Non-recyclable items<br>
-                ✅ Food-contaminated packaging<br>
-                ❌ No recyclable items<br>
-                ❌ No garden waste
-            </div>
+    # Black Bin
+    st.markdown("### ⚫ Black Bin (Weekly)")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("**✅ Accepted**")
+        st.markdown("- General household waste\n- Non-recyclable items\n- Food-contaminated packaging")
+    with col2:
+        st.markdown("**❌ Not Accepted**")
+        st.markdown("- Recyclable items\n- Garden waste")
 
-            <div class="bin-type">
-                <h4>🟢 Green Bin (Weekly)</h4>
-                ✅ Grass cuttings<br>
-                ✅ Leaves & plants<br>
-                ✅ Small branches<br>
-                ❌ No soil or rubble<br>
-                ❌ No food waste
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
+    # Green Bin
+    st.markdown("### 🟢 Green Bin (Weekly)")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("**✅ Accepted**")
+        st.markdown("- Grass cuttings\n- Leaves & plants\n- Small branches")
+    with col2:
+        st.markdown("**❌ Not Accepted**")
+        st.markdown("- Soil or rubble\n- Food waste")
 
 # Instructions
 st.markdown("""
